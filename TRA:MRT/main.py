@@ -34,7 +34,8 @@ postData = {'__VIEWSTATE' : __VIEWSTATE, #Enter Page's View State
 'ctl00$ContentPlaceHolder1$txtSDateE' : '02272016', #endDate--TRA:mmddYYYY,MRT:YYYYmmdd
 'ctl00$ContentPlaceHolder1$txtCardID' : '', #cardID
 'ctl00$ContentPlaceHolder1$TextBox1': '', #birthday--mmdd
-'ctl00$ContentPlaceHolder1$txtValidateCode': OCR #ValidateCode
+'ctl00$ContentPlaceHolder1$txtValidateCode': OCR, #ValidateCode
+'ctl00$ContentPlaceHolder1$cmdQuery' : '查詢'
 }
 
 
