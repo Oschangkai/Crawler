@@ -1,6 +1,5 @@
 #from distutils.core import setup
 #import py2exe
-import re
 import requests
 from bs4 import BeautifulSoup
 def dormQuery():
@@ -24,9 +23,9 @@ def dormQuery():
     girls = girls.replace('\n', '').replace('暫時排名性別籤號備註','').replace(' ','\n').replace('女', ' ')
     file.write(girls)
 
-def findNo(num):
+def findNo(num, gender):
     array = []
-    with open('boys.txt') as line:
+    with open(gender + '.txt') as line:
         for people in line:
             array.append(people)
     i = 0
@@ -36,14 +35,55 @@ def findNo(num):
             break
         i += 1
 
+def ticket(num, gender):
+    array = []
+    with open(gender + '.txt') as line:
+        for people in line:
+            array.append(people)
+    i = 0
+    for item in array:
+        if(item.startswith(num)):
+            print(array[i])
+            break
+        i += 1
+
+def findNoask(gender):
+    num = input('請輸入籤號，離開請輸入exit：')
+    while not num == 'exit':
+        findNo(num, gender)
+        num = input('請輸入籤號，離開請輸入exit：')
+
+def ticketAsk(gender):
+    num = input('請輸入排名，離開請輸入exit：')
+    while not num == 'exit':
+        ticket(num, gender)
+        num = input('請輸入排名，離開請輸入exit：')
+
 if __name__ == "__main__":
-    print('宿舍抽籤查詢')
+    print('(男)宿舍抽籤查詢')
     print('若停留此畫面太久，代表網路狀況不穩定')
     dormQuery()
-    num = input('請輸入想查詢的抽籤號碼，離開請輸入exit：')
-    while not num == 'exit':
-        findNo(num)
-        num = input('請輸入想查詢的抽籤號碼，離開請輸入exit：')
+    choose = input('1. 男宿, 2. 女宿  ')
+    while not choose == '3':
+        if choose == '1':
+            gender = 'boys'
+            break
+        elif choose == '2':
+            gender = 'girls'
+            break
+        else:  choose = input('\n輸入錯誤，請重新輸入！\n1. 男宿, 2. 女宿, 3. 離開  ')
+    choose = input('\n1. 查籤號排名, 2. 查排名籤號, 3. 離開  ')
+    while not choose == '3':
+        if choose == '1':
+            findNoask(gender)
+            break
+        elif choose == '2':
+            ticketAsk(gender)
+            break
+        elif choose == '3':
+            break
+        else:  choose = input('\n輸入錯誤，請重新輸入！\n1. 查排名, 2. 查序號, 3. 離開  ')
+
 
 #setup(
 #    options = {'py2exe': {
