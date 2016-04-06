@@ -60,7 +60,7 @@ def ticketAsk(gender):
         num = input('請輸入排名，離開請輸入exit：')
 
 if __name__ == "__main__":
-    print('(男)宿舍抽籤查詢')
+    print('105宿舍抽籤查詢')
     print('若停留此畫面太久，代表網路狀況不穩定')
     dormQuery()
     choose = input('1. 男宿, 2. 女宿  ')
